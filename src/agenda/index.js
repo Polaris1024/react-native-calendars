@@ -91,7 +91,11 @@ export default class AgendaView extends Component {
     /** Called when the momentum scroll starts for the agenda list. **/
     onMomentumScrollBegin: PropTypes.func,
     /** Called when the momentum scroll stops for the agenda list. **/
-    onMomentumScrollEnd: PropTypes.func
+    onMomentumScrollEnd: PropTypes.func,
+    /** Called once when the scroll position gets within onEndReachedThreshold of the rendered content. **/
+    onEndReached: PropTypes.func,
+    /** How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback.  **/
+    onEndReachedThreshold: PropTypes.number,
   };
 
   constructor(props) {
@@ -301,6 +305,8 @@ export default class AgendaView extends Component {
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing}
         onRefresh={this.props.onRefresh}
+        onEndReachedThreshold={this.props.onEndReachedThreshold}
+        onEndReached={this.props.onEndReached}
         rowHasChanged={this.props.rowHasChanged}
         renderItem={this.props.renderItem}
         renderDay={this.props.renderDay}

@@ -36,7 +36,9 @@ class ReservationList extends Component {
     onScrollBeginDrag: PropTypes.func,
     onScrollEndDrag: PropTypes.func,
     onMomentumScrollBegin: PropTypes.func,
-    onMomentumScrollEnd: PropTypes.func
+    onMomentumScrollEnd: PropTypes.func,
+    onEndReachedThreshold: PropTypes.number,
+    onEndReached: PropTypes.func,
   };
 
   constructor(props) {
@@ -213,6 +215,8 @@ class ReservationList extends Component {
         onScrollEndDrag={this.props.onScrollEndDrag}
         onMomentumScrollBegin={this.props.onMomentumScrollBegin}
         onMomentumScrollEnd={this.props.onMomentumScrollEnd}
+        onEndReachedThreshold={this.props.onEndReachedThreshold}
+        onEndReached={this.props.onEndReached}
       />
     );
   }
