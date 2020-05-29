@@ -238,8 +238,12 @@ export default class AgendaView extends Component {
   UNSAFE_componentWillReceiveProps(props) {
     if (props.items) {
       this.setState({
-        firstResevationLoad: false
+        firstResevationLoad: false,
+        displayStartDate: parseDate(this.props.displayStart) || XDate(true),
+        selectedDay: parseDate(this.props.selected) || XDate(true),
+        topDay: parseDate(this.props.selected) || XDate(true)
       });
+      this.onDayChange(props.selected)
     } else {
       this.loadReservations(props);
     }

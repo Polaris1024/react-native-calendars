@@ -164,9 +164,9 @@ class ReservationList extends Component {
     let reservations = [];
     if (this.state.reservations && this.state.reservations.length) {
       let iterator = this.state.reservations[0].day.clone();
-      if (props.displayStartDate) {
-        iterator = props.displayStartDate.clone();
-      }
+      // if (props.displayStartDate) {
+      //   iterator = props.displayStartDate.clone();
+      // }
       while (iterator.getTime() < props.selectedDay.getTime()) {
         const res = this.getReservationsForDay(iterator, props);
         if (!res) {
@@ -179,7 +179,8 @@ class ReservationList extends Component {
       }
     }
     const scrollPosition = reservations.length;
-    const iterator = props.displayStartDate.clone();
+    const iterator = props.selectedDay.clone()
+    // const iterator = props.displayStartDate.clone();
     for (let i = 0; i < 31; i++) {
       const res = this.getReservationsForDay(iterator, props);
       if (res) {
