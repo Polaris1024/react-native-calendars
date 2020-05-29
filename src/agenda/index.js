@@ -62,6 +62,8 @@ export default class AgendaView extends Component {
     futureScrollRange: PropTypes.number,
     /** initially selected day */
     selected: PropTypes.any,
+    /** Display item from the date */
+    displayStartDate: PropTypes.any,
     /** Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined */
     minDate: PropTypes.any,
     /** Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined */
@@ -97,7 +99,7 @@ export default class AgendaView extends Component {
     /** How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback.  **/
     onEndReachedThreshold: PropTypes.number,
   };
-
+  
   constructor(props) {
     super(props);
 
@@ -304,6 +306,7 @@ export default class AgendaView extends Component {
         onMomentumScrollEnd={this.props.onMomentumScrollEnd}
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing}
+        displayStartDate={this.props.displayStartDate}
         onRefresh={this.props.onRefresh}
         onEndReachedThreshold={this.props.onEndReachedThreshold}
         onEndReached={this.props.onEndReached}

@@ -39,6 +39,7 @@ class ReservationList extends Component {
     onMomentumScrollEnd: PropTypes.func,
     onEndReachedThreshold: PropTypes.number,
     onEndReached: PropTypes.func,
+    displayStartDate: PropTypes.any,
   };
 
   constructor(props) {
@@ -162,7 +163,10 @@ class ReservationList extends Component {
     }
     let reservations = [];
     if (this.state.reservations && this.state.reservations.length) {
-      const iterator = this.state.reservations[0].day.clone();
+      let iterator = this.state.reservations[0].day.clone();
+      if (props.displayStartDate) {
+        iterator = props.displayStartDate.clone();
+      }
       while (iterator.getTime() < props.selectedDay.getTime()) {
         const res = this.getReservationsForDay(iterator, props);
         if (!res) {
