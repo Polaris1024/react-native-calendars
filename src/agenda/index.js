@@ -63,7 +63,7 @@ export default class AgendaView extends Component {
     /** initially selected day */
     selected: PropTypes.any,
     /** Display item from the date */
-    displayStartDate: PropTypes.any,
+    displayStart: PropTypes.any,
     /** Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined */
     minDate: PropTypes.any,
     /** Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined */
@@ -116,6 +116,7 @@ export default class AgendaView extends Component {
       calendarIsReady: false,
       calendarScrollable: false,
       firstResevationLoad: false,
+      displayStartDate: parseDate(this.props.displayStart) || XDate(true),
       selectedDay: parseDate(this.props.selected) || XDate(true),
       topDay: parseDate(this.props.selected) || XDate(true)
     };
@@ -306,7 +307,7 @@ export default class AgendaView extends Component {
         onMomentumScrollEnd={this.props.onMomentumScrollEnd}
         refreshControl={this.props.refreshControl}
         refreshing={this.props.refreshing}
-        displayStartDate={this.props.displayStartDate}
+        displayStartDate={this.state.displayStartDate}
         onRefresh={this.props.onRefresh}
         onEndReachedThreshold={this.props.onEndReachedThreshold}
         onEndReached={this.props.onEndReached}
